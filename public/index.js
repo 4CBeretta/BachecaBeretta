@@ -87,10 +87,10 @@ getRedirectResult(auth)
         document.getElementById("logincreateSection").hidden = true;
         document.getElementById("contentAnnunci").hidden = true;
         document.getElementById("contentCrea").hidden = true;
-        document.getElementById("navbtn1").hidden = true;
-        document.getElementById("navbtn2").hidden = true;
-        document.getElementById("navbtn3").hidden = true;
-        document.getElementById("navbtn4").hidden = true;
+        document.getElementById("navbtnSellBook").hidden = true;
+        document.getElementById("navbtnBuyBook").hidden = true;
+        document.getElementById("navbtnSellRep").hidden = true;
+        document.getElementById("navbtnBuyRep").hidden = true;
         document.getElementById("bookSellAdSection").hidden = true;
         document.getElementById("bookBuyAdSection").hidden = true;
         document.getElementById("repSellAdSection").hidden = true;
@@ -119,10 +119,10 @@ function onLoggedIn() {
   document.getElementById("createAccountSection").hidden = true;
   document.getElementById("contentAnnunci").hidden = false;
   document.getElementById("contentCrea").hidden = false;
-  document.getElementById("navbtn1").hidden = false;
-  document.getElementById("navbtn2").hidden = false;
-  document.getElementById("navbtn3").hidden = false;
-  document.getElementById("navbtn4").hidden = false;
+  document.getElementById("navbtnSellBook").hidden = false;
+  document.getElementById("navbtnBuyBook").hidden = false;
+  document.getElementById("navbtnSellRep").hidden = false;
+  document.getElementById("navbtnBuyRep").hidden = false;
   document.getElementById('loginbtnNav').hidden = true;
   document.getElementById("homebtnNav").hidden = true;
   document.getElementById("profiloSection").hidden = true;
@@ -132,6 +132,8 @@ function onLoggedIn() {
   document.getElementById("bookBuyAdSection").hidden = true;
   document.getElementById("repSellAdSection").hidden = true;
   document.getElementById("repBuyAdSection").hidden = true;
+
+  window.alert("LOGGATO");
 }
 
 function onLoggedOut() {
@@ -140,10 +142,10 @@ function onLoggedOut() {
   document.getElementById("createAccountSection").hidden = true;
   document.getElementById("contentAnnunci").hidden = false;
   document.getElementById("contentCrea").hidden = false;
-  document.getElementById("navbtn1").hidden = false;
-  document.getElementById("navbtn2").hidden = false;
-  document.getElementById("navbtn3").hidden = false;
-  document.getElementById("navbtn4").hidden = false;
+  document.getElementById("navbtnSellBook").hidden = false;
+  document.getElementById("navbtnBuyBook").hidden = false;
+  document.getElementById("navbtnSellRep").hidden = false;
+  document.getElementById("navbtnBuyRep").hidden = false;
   document.getElementById('loginbtnNav').hidden = false;
   document.getElementById("homebtnNav").hidden = true;
   document.getElementById("profiloSection").hidden = true;
@@ -168,12 +170,12 @@ function fillBookSellAdSection(data, venditore) {
   document.getElementById("bookSellAdSectionData").innerHTML = data.ad.date;
   document.getElementById("bookSellAdSectionVenditore").innerHTML = venditore.nome + " " + venditore.cognome;
   document.getElementById("bookSellAdSectionContatti").innerHTML = "Mail: " + venditore.mail;
-  if(venditore.insta !== null)
-    document.getElementById("bookSellAdSectionContatti").innerHTML += "\nInstagram: " + venditore.insta;
-  if(venditore.telefono !== null)
-    document.getElementById("bookSellAdSectionContatti").innerHTML += "\nTelefono: " + venditore.telefono;
-  if(venditore.telegram !== null)
-    document.getElementById("bookSellAdSectionContatti").innerHTML += "\nTelegram: " + venditore.telegram;
+  if('insta' in venditore)
+    document.getElementById("bookSellAdSectionContatti").innerHTML += "<br>Instagram: " + venditore.insta;
+  if('teltefono' in venditore)
+    document.getElementById("bookSellAdSectionContatti").innerHTML += "<br>Telefono: " + venditore.telefono;
+  if('telegram' in venditore)
+    document.getElementById("bookSellAdSectionContatti").innerHTML += "<br>Telegram: " + venditore.telegram;
 }
 function fillBookBuyAdSection(data, acquirente) {
   document.getElementById("bookBuyAdSectionTitolo").innerHTML = data.ad.titolo;
@@ -184,12 +186,12 @@ function fillBookBuyAdSection(data, acquirente) {
   document.getElementById("bookBuyAdSectionData").innerHTML = data.ad.date;
   document.getElementById("bookBuyAdSectionAcquirente").innerHTML = acquirente.nome + " " + acquirente.cognome;
   document.getElementById("bookBuyAdSectionContatti").innerHTML = "Mail: " + acquirente.mail;
-  if(acquirente.insta !== null)
-    document.getElementById("bookBuyAdSectionContatti").innerHTML += "\nInstagram: " + acquirente.insta;
-  if(acquirente.telefono !== null)
-    document.getElementById("bookBuyAdSectionContatti").innerHTML += "\nTelefono: " + acquirente.telefono;
-  if(acquirente.telegram !== null)
-    document.getElementById("bookBuyAdSectionContatti").innerHTML += "\nTelegram: " + acquirente.telegram;
+  if('insta' in acquirente)
+    document.getElementById("bookBuyAdSectionContatti").innerHTML += "<br>Instagram: " + acquirente.insta;
+  if('telefono' in acquirente)
+    document.getElementById("bookBuyAdSectionContatti").innerHTML += "<br>Telefono: " + acquirente.telefono;
+  if('telegram' in acquirente)
+    document.getElementById("bookBuyAdSectionContatti").innerHTML += "<br>Telegram: " + acquirente.telegram;
 }
 function fillRepSellAdSection(data, venditore) {
   var subs = Object.keys(data.ad.subs);
@@ -206,12 +208,12 @@ function fillRepSellAdSection(data, venditore) {
   document.getElementById("repSellAdSectionData").innerHTML = data.ad.date;
   document.getElementById("repSellAdSectionVenditore").innerHTML = venditore.nome + " " + venditore.cognome;
   document.getElementById("repSellAdSectionContatti").innerHTML = "Mail: " + venditore.mail;
-  if(venditore.insta !== null)
-    document.getElementById("repSellAdSectionContatti").innerHTML += "\nInstagram: " + venditore.insta;
-  if(venditore.telefono !== null)
-    document.getElementById("repSellAdSectionContatti").innerHTML += "\nTelefono: " + venditore.telefono;
-  if(venditore.telegram !== null)
-    document.getElementById("repSellAdSectionContatti").innerHTML += "\nTelegram: " + venditore.telegram;
+  if('insta' in venditore)
+    document.getElementById("repSellAdSectionContatti").innerHTML += "<br>Instagram: " + venditore.insta;
+  if('telefono' in venditore)
+    document.getElementById("repSellAdSectionContatti").innerHTML += "<br>Telefono: " + venditore.telefono;
+  if('telegram' in venditore)
+    document.getElementById("repSellAdSectionContatti").innerHTML += "<br>Telegram: " + venditore.telegram;
 }
 function fillRepBuyAdSection(data, acquirente) {
   var subs = Object.keys(data.ad.subs);
@@ -222,14 +224,14 @@ function fillRepBuyAdSection(data, acquirente) {
   }
   document.getElementById("repBuyAdSectionArgomento").innerHTML = data.ad.argomento;
   document.getElementById("repBuyAdSectionAcquirente").innerHTML = acquirente.nome + " " + acquirente.cognome;
-  document.getElementById("repSellAdSectionData").innerHTML = data.ad.date;
+  document.getElementById("repBuyAdSectionData").innerHTML = data.ad.date;
   document.getElementById("repBuyAdSectionContatti").innerHTML = "Mail: " + acquirente.mail;
-  if(acquirente.insta !== null)
-    document.getElementById("repBuyAdSectionContatti").innerHTML += "\nInstagram: " + acquirente.insta;
-  if(acquirente.telefono !== null)
-    document.getElementById("repBuyAdSectionContatti").innerHTML += "\nTelefono: " + acquirente.telefono;
-  if(acquirente.telegram !== null)
-    document.getElementById("repBuyAdSectionContatti").innerHTML += "\nTelegram: " + acquirente.telegram;
+  if('insta' in acquirente)
+    document.getElementById("repBuyAdSectionContatti").innerHTML += "<br>Instagram: " + acquirente.insta;
+  if('telefono' in acquirente)
+    document.getElementById("repBuyAdSectionContatti").innerHTML += "<br>Telefono: " + acquirente.telefono;
+  if('telegram' in acquirente)
+    document.getElementById("repBuyAdSectionContatti").innerHTML += "<br>Telegram: " + acquirente.telegram;
 }
 
 function fillBookSellAdSectionUser(data) {
@@ -551,10 +553,10 @@ function downloadUserAds() {
         document.getElementById("createAccountSection").hidden = true;
         document.getElementById("contentAnnunci").hidden = true;
         document.getElementById("contentCrea").hidden = true;
-        document.getElementById("navbtn1").hidden = true;
-        document.getElementById("navbtn2").hidden = true;
-        document.getElementById("navbtn3").hidden = true;
-        document.getElementById("navbtn4").hidden = true;
+        document.getElementById("navbtnSellBook").hidden = true;
+        document.getElementById("navbtnBuyBook").hidden = true;
+        document.getElementById("navbtnSellRep").hidden = true;
+        document.getElementById("navbtnBuyRep").hidden = true;
         document.getElementById("bookBuyAdSectionUser").hidden = true;
         document.getElementById("repSellAdSectionUser").hidden = true;
         document.getElementById("repBuyAdSectionUser").hidden = true;
@@ -623,10 +625,10 @@ function downloadUserAds() {
         document.getElementById("createAccountSection").hidden = true;
         document.getElementById("contentAnnunci").hidden = true;
         document.getElementById("contentCrea").hidden = true;
-        document.getElementById("navbtn1").hidden = true;
-        document.getElementById("navbtn2").hidden = true;
-        document.getElementById("navbtn3").hidden = true;
-        document.getElementById("navbtn4").hidden = true;
+        document.getElementById("navbtnSellBook").hidden = true;
+        document.getElementById("navbtnBuyBook").hidden = true;
+        document.getElementById("navbtnSellRep").hidden = true;
+        document.getElementById("navbtnBuyRep").hidden = true;
         document.getElementById("bookSellAdSectionUser").hidden = true;
         document.getElementById("repSellAdSectionUser").hidden = true;
         document.getElementById("repBuyAdSectionUser").hidden = true;
@@ -651,7 +653,7 @@ function downloadUserAds() {
   getDb(query(refDb(database, 'venditalezione'), orderByChild('venditore'), equalTo(userData.id))).then((snap) => {
     if(snap.val() === null)
       return;
-
+      // hihihihihihi caca
     let vals = snap.val();
     var ads = [];
     for (let val in vals) {
@@ -695,10 +697,10 @@ function downloadUserAds() {
         document.getElementById("logincreateSection").hidden = true;
         document.getElementById("contentAnnunci").hidden = true;
         document.getElementById("contentCrea").hidden = true;
-        document.getElementById("navbtn1").hidden = true;
-        document.getElementById("navbtn2").hidden = true;
-        document.getElementById("navbtn3").hidden = true;
-        document.getElementById("navbtn4").hidden = true;
+        document.getElementById("navbtnSellBook").hidden = true;
+        document.getElementById("navbtnBuyBook").hidden = true;
+        document.getElementById("navbtnSellRep").hidden = true;
+        document.getElementById("navbtnBuyRep").hidden = true;
         document.getElementById("bookSellAdSectionUser").hidden = true;
         document.getElementById("bookBuyAdSectionUser").hidden = true;
         document.getElementById("repBuyAdSectionUser").hidden = true;
@@ -767,14 +769,14 @@ function downloadUserAds() {
         document.getElementById("createAccountSection").hidden = true;
         document.getElementById("contentAnnunci").hidden = true;
         document.getElementById("contentCrea").hidden = true;
-        document.getElementById("navbtn1").hidden = true;
-        document.getElementById("navbtn2").hidden = true;
-        document.getElementById("navbtn3").hidden = true;
-        document.getElementById("navbtn4").hidden = true;
+        document.getElementById("navbtnSellBook").hidden = true;
+        document.getElementById("navbtnBuyBook").hidden = true;
+        document.getElementById("navbtnSellRep").hidden = true;
+        document.getElementById("navbtnBuyRep").hidden = true;
         document.getElementById("bookSellAdSectionUser").hidden = true;
         document.getElementById("bookBuyAdSectionUser").hidden = true;
         document.getElementById("repSellAdSectionUser").hidden = true;
-
+          // hihihihihihi caca
         if (userData.id === null) {
           document.getElementById("loginbtnNav").hidden = false;
           document.getElementById("profilobtnNav").hidden = true;
@@ -897,6 +899,10 @@ window.addEventListener('load', function() {
   // NAV BAR BUTTONS
   var loginButtonNav = document.getElementById('loginbtnNav');
   var homeBtnNav = document.getElementById("homebtnNav");
+  var navbtnBuyBook = document.getElementById("navbtnBuyBook");
+  var navbtnSellBook = document.getElementById("navbtnSellBook");
+  var navbtnSellRep = document.getElementById("navbtnSellRep");
+  var navbtnBuyRep = document.getElementById("navbtnBuyRep");
   loginButtonNav.addEventListener('click', function() {
     //signInWithRedirect(auth, provider);
 
@@ -905,10 +911,10 @@ window.addEventListener('load', function() {
     document.getElementById("logincreateSection").hidden = false;
     document.getElementById("contentAnnunci").hidden = true;
     document.getElementById("contentCrea").hidden = true;
-    document.getElementById("navbtn1").hidden = true;
-    document.getElementById("navbtn2").hidden = true;
-    document.getElementById("navbtn3").hidden = true;
-    document.getElementById("navbtn4").hidden = true;
+    navbtnBuyBook.hidden = true;
+    navbtnSellBook.hidden = true;
+    navbtnSellRep.hidden = true;
+    navbtnBuyRep.hidden = true;
     document.getElementById("bookSellAdSection").hidden = true;
     document.getElementById("bookBuyAdSection").hidden = true;
     document.getElementById("repSellAdSection").hidden = true;
@@ -931,10 +937,10 @@ window.addEventListener('load', function() {
     document.getElementById("logincreateSection").hidden = true;
     document.getElementById("createAccountSection").hidden = true;
     document.getElementById("contentAnnunci").hidden = false;
-    document.getElementById("navbtn1").hidden = false;
-    document.getElementById("navbtn2").hidden = false;
-    document.getElementById("navbtn3").hidden = false;
-    document.getElementById("navbtn4").hidden = false;
+    navbtnBuyBook.hidden = false;
+    navbtnSellBook.hidden = false;
+    navbtnSellRep.hidden = false;
+    navbtnBuyRep.hidden = false;
     document.getElementById("profiloSection").hidden = true;
     document.getElementById("bookSellAdSection").hidden = true;
     document.getElementById("bookBuyAdSection").hidden = true;
@@ -957,16 +963,17 @@ window.addEventListener('load', function() {
     document.getElementById("logincreateSection").hidden = true;
     document.getElementById("createAccountSection").hidden = true;
     document.getElementById("contentAnnunci").hidden = false;
-    document.getElementById("navbtn1").hidden = false;
-    document.getElementById("navbtn2").hidden = false;
-    document.getElementById("navbtn3").hidden = false;
-    document.getElementById("navbtn4").hidden = false;
+    navbtnBuyBook.hidden = false;
+    navbtnSellBook.hidden = false;
+    navbtnSellRep.hidden = false;
+    navbtnBuyRep.hidden = false;
     document.getElementById("profiloSection").hidden = true;
     document.getElementById("bookSellAdSection").hidden = true;
     document.getElementById("bookBuyAdSection").hidden = true;
     document.getElementById("repSellAdSection").hidden = true;
     document.getElementById("repBuyAdSection").hidden = true;
     //document.getElementById("services").hidden = false;
+    // hihihihihihi caca
   });
   var profiloBtnNav = document.getElementById("profilobtnNav");
   profiloBtnNav.addEventListener('click', function() {
@@ -976,10 +983,10 @@ window.addEventListener('load', function() {
     document.getElementById("createAccountSection").hidden = true;
     document.getElementById("contentAnnunci").hidden = true;
     document.getElementById("contentCrea").hidden = false;
-    document.getElementById("navbtn1").hidden = true;
-    document.getElementById("navbtn2").hidden = true;
-    document.getElementById("navbtn3").hidden = true;
-    document.getElementById("navbtn4").hidden = true;
+    navbtnBuyBook.hidden = true;
+    navbtnSellBook.hidden = true;
+    navbtnSellRep.hidden = true;
+    navbtnBuyRep.hidden = true;
     document.getElementById("profilobtnNav").hidden = true;
     document.getElementById("profiloSection").hidden = false;
     document.getElementById("bookSellAdSection").hidden = true;
@@ -990,6 +997,38 @@ window.addEventListener('load', function() {
 
     // download user ads;
     downloadUserAds();
+  });
+  navbtnBuyBook.addEventListener('click', function() {
+    if(userData.id !== null)
+      window.location.href = window.location.href.split('#')[0] + "#bookBuySection";
+    else {
+      window.alert("Per creare annunci è necessario avere un account!");
+      signInWithRedirect(auth, provider);
+    }
+  });
+  navbtnSellBook.addEventListener('click', function() {
+    if(userData.id !== null)
+      window.location.href = window.location.href.split('#')[0] + "#bookSellSection";
+    else {
+      window.alert("Per creare annunci è necessario avere un account!");
+      signInWithRedirect(auth, provider);
+    }
+  });
+  navbtnBuyRep.addEventListener('click', function() {
+    if(userData.id !== null)
+      window.location.href = window.location.href.split('#')[0] + "#repBuySection";
+    else {
+      window.alert("Per creare annunci è necessario avere un account!");
+      signInWithRedirect(auth, provider);
+    }
+  });
+  navbtnSellRep.addEventListener('click', function() {
+    if(userData.id !== null)
+      window.location.href = window.location.href.split('#')[0] + "#repSellSection";
+    else {
+      window.alert("Per creare annunci è necessario avere un account!");
+      signInWithRedirect(auth, provider);
+    }
   });
 
   var buyBookButton = document.getElementById("buyBookButton");
@@ -1037,10 +1076,10 @@ window.addEventListener('load', function() {
     document.getElementById("logincreateSection").hidden = true;
     document.getElementById("contentAnnunci").hidden = false;
     document.getElementById("contentCrea").hidden = true;
-    document.getElementById("navbtn1").hidden = false;
-    document.getElementById("navbtn2").hidden = false;
-    document.getElementById("navbtn3").hidden = false;
-    document.getElementById("navbtn4").hidden = false;
+    document.getElementById("navbtnSellBook").hidden = false;
+    document.getElementById("navbtnBuyBook").hidden = false;
+    document.getElementById("navbtnSellRep").hidden = false;
+    document.getElementById("navbtnBuyRep").hidden = false;
     document.getElementById("profilobtnNav").hidden = false;
     document.getElementById("profiloSection").hidden = true;
     //document.getElementById("services").hidden = false;
@@ -1379,10 +1418,10 @@ window.addEventListener('load', function() {
         document.getElementById("logincreateSection").hidden = true;
         document.getElementById("contentAnnunci").hidden = true;
         document.getElementById("contentCrea").hidden = true;
-        document.getElementById("navbtn1").hidden = true;
-        document.getElementById("navbtn2").hidden = true;
-        document.getElementById("navbtn3").hidden = true;
-        document.getElementById("navbtn4").hidden = true;
+        document.getElementById("navbtnSellBook").hidden = true;
+        document.getElementById("navbtnBuyBook").hidden = true;
+        document.getElementById("navbtnSellRep").hidden = true;
+        document.getElementById("navbtnBuyRep").hidden = true;
         document.getElementById("bookBuyAdSection").hidden = true;
         document.getElementById("repSellAdSection").hidden = true;
         document.getElementById("repBuyAdSection").hidden = true;
@@ -1395,8 +1434,8 @@ window.addEventListener('load', function() {
           document.getElementById("loginbtnNav").hidden = true;
           document.getElementById("profilobtnNav").hidden = false;
         }
-        getDb(refDb(database, 'users/' + ad.acquirente)).then((snap) => {
-          fillBookSellAdSection(data, snap.val());
+        getDb(refDb(database, 'users/' + ad.ad.acquirente)).then((snap) => {
+          fillBookSellAdSection(ad, snap.val());
         });
       });
 
@@ -1443,10 +1482,10 @@ window.addEventListener('load', function() {
         document.getElementById("logincreateSection").hidden = true;
         document.getElementById("contentAnnunci").hidden = true;
         document.getElementById("contentCrea").hidden = true;
-        document.getElementById("navbtn1").hidden = true;
-        document.getElementById("navbtn2").hidden = true;
-        document.getElementById("navbtn3").hidden = true;
-        document.getElementById("navbtn4").hidden = true;
+        document.getElementById("navbtnSellBook").hidden = true;
+        document.getElementById("navbtnBuyBook").hidden = true;
+        document.getElementById("navbtnSellRep").hidden = true;
+        document.getElementById("navbtnBuyRep").hidden = true;
         document.getElementById("bookSellAdSection").hidden = true;
         document.getElementById("repSellAdSection").hidden = true;
         document.getElementById("repBuyAdSection").hidden = true;
@@ -1460,8 +1499,10 @@ window.addEventListener('load', function() {
           document.getElementById("profilobtnNav").hidden = false;
         }
 
-        getDb(refDb(database, 'users/' + ad.acquirente)).then((snap) => {
-          fillBookBuyAdSection(data, snap.val());
+        getDb(refDb(database, 'users/' + ad.ad.acquirente)).then((snap) => {
+          console.log(snap.val());
+
+          fillBookBuyAdSection(ad, snap.val());
         });
       });
 
@@ -1475,7 +1516,7 @@ window.addEventListener('load', function() {
   getDb(query(refDb(database, 'venditalezione'), orderByChild('dateMillis'), limitToLast(15))).then((snap) => {
     if(snap.val() === null)
       return;
-
+// hihihihihihi caca
     let vals = snap.val();
     var ads = [];
     for (let val in vals) {
@@ -1507,10 +1548,10 @@ window.addEventListener('load', function() {
         document.getElementById("logincreateSection").hidden = true;
         document.getElementById("contentAnnunci").hidden = true;
         document.getElementById("contentCrea").hidden = true;
-        document.getElementById("navbtn1").hidden = true;
-        document.getElementById("navbtn2").hidden = true;
-        document.getElementById("navbtn3").hidden = true;
-        document.getElementById("navbtn4").hidden = true;
+        document.getElementById("navbtnSellBook").hidden = true;
+        document.getElementById("navbtnBuyBook").hidden = true;
+        document.getElementById("navbtnSellRep").hidden = true;
+        document.getElementById("navbtnBuyRep").hidden = true;
         document.getElementById("bookBuyAdSection").hidden = true;
         document.getElementById("bookSellAdSection").hidden = true;
         document.getElementById("repBuyAdSection").hidden = true;
@@ -1524,8 +1565,9 @@ window.addEventListener('load', function() {
           document.getElementById("profilobtnNav").hidden = false;
         }
 
-        getDb(refDb(database, 'users/' + ad.acquirente)).then((snap) => {
-          fillRepSellAdSection(data, snap.val());
+        getDb(refDb(database, 'users/' + ad.ad.acquirente)).then((snap) => {
+          console.log(snap.val());
+          fillRepSellAdSection(ad, snap.val());
         });
       });
 
@@ -1539,7 +1581,7 @@ window.addEventListener('load', function() {
   getDb(query(refDb(database, 'richiestalezione'), orderByChild('dateMillis'), limitToLast(15))).then((snap) => {
     if(snap.val() === null)
       return;
-
+      // hihihihihihi caca
     let vals = snap.val();
     var ads = [];
     for (let val in vals) {
@@ -1571,10 +1613,10 @@ window.addEventListener('load', function() {
         document.getElementById("logincreateSection").hidden = true;
         document.getElementById("contentAnnunci").hidden = true;
         document.getElementById("contentCrea").hidden = true;
-        document.getElementById("navbtn1").hidden = true;
-        document.getElementById("navbtn2").hidden = true;
-        document.getElementById("navbtn3").hidden = true;
-        document.getElementById("navbtn4").hidden = true;
+        document.getElementById("navbtnSellBook").hidden = true;
+        document.getElementById("navbtnBuyBook").hidden = true;
+        document.getElementById("navbtnSellRep").hidden = true;
+        document.getElementById("navbtnBuyRep").hidden = true;
         document.getElementById("bookBuyAdSection").hidden = true;
         document.getElementById("repSellAdSection").hidden = true;
         document.getElementById("bookSellAdSection").hidden = true;
@@ -1588,8 +1630,8 @@ window.addEventListener('load', function() {
           document.getElementById("profilobtnNav").hidden = false;
         }
 
-        getDb(refDb(database, 'users/' + ad.acquirente)).then((snap) => {
-          fillRepBuyAdSection(data, snap.val());
+        getDb(refDb(database, 'users/' + ad.ad.acquirente)).then((snap) => {
+          fillRepBuyAdSection(ad, snap.val());
         });
       });
 
