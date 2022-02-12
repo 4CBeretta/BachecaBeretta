@@ -1,0 +1,19 @@
+{
+  "rules": {
+    ".read": true,
+    ".write": true,
+      
+  	"venditalezione": {
+      ".indexOn": ["dateMillis", "venditore"]
+    },
+    "venditalibro": {
+      ".indexOn": ["dateMillis", "venditore"]
+    },
+    "richiestalezione": {
+      ".indexOn": ["dateMillis", "acquirente"]
+    },
+    "richiestalibro": {
+      ".indexOn": ["dateMillis", "acquirente"]
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "firebase": "^9.6.6",
+    "webpack": "^5.68.0"
+  },
+  "devDependencies": {
+    "webpack-cli": "^4.9.2"
+  }
+}
